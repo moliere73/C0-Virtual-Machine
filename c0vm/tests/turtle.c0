@@ -1,0 +1,98 @@
+#use <conio>
+#use <string>
+
+
+typedef struct yummy_header yummy;
+struct yummy_header{
+    int num_snacks;
+    string snack_type;
+};
+
+
+int main(){
+    printf("***** Pointers: *****\n");
+    //Test 1 (imstore, imload)
+    int* a = alloc(int);
+    *a = 1;
+    printf("Test 1 (imstore, imload): %d\n", *a);
+    assert(*a == 1);
+
+
+    //Test 2 (amstore, amload)
+    string* s = alloc(string);
+    *s = "hello!";
+    printf("Test 2 (amstore, amload): %s\n",*s);
+    assert(string_equal(*s, "hello!"));
+
+
+    //Test 3 (amstore, amload, probably also imstore imload idk)
+    int** b = alloc(int*);
+    *b = a;
+    printf("Test 3 (amstore, amload, probably also imstore imload idk): %d\n",**b);
+    assert(**b == 1);
+
+
+    //Test 4 (same as test 3)
+    int** bb = alloc(int*);
+    *bb = *b;
+    **bb = 2;
+    printf("Test 4: %d\n",**bb);
+    printf("Test 4: %d\n",**b);
+    assert(**b == **bb);
+
+
+    //Test 5 (amstore, amload)
+    string** ss = alloc(string*);
+    *ss = s;
+    printf("Test 5 (amstore, amload): %s\n",**ss);
+    assert(string_equal(**ss, "hello!"));
+
+
+    //Test 6 (cmstore, cmload)
+    char* c = alloc(char);
+    *c = 'c';
+    printf("Test 6 (cmstore, cmload): %c\n",*c);
+    assert(*c == 'c');
+
+
+    //Test 7 (amstore, amload)
+    char** cc = alloc(char*);
+    *cc = c;
+    printf("Test 7 (amstore, amload): %c\n",**cc);
+    assert(**cc == 'c');
+
+
+    //Array testing
+    printf("\n***** Arrays: *****\n");
+    int[] array1 = alloc_array(int, 5);
+    array1[0] = 1;
+    array1[1] = 2;
+    array1[2] = 3;
+    array1[3] = 4;
+    array1[4] = 5;
+    printf("Array test 1: %d\n", array1[3]);
+    assert(array1[3] == 4);
+
+
+    int*[] array2 = alloc_array(int*, 3);
+    array2[0] = a;
+    array2[1] = *b;
+    array2[2] = *bb;
+    printf("Array test 2: %d,%d,%d\n", *array2[0],*array2[1],*array2[2]);
+    assert(*array2[0] == 2);
+    assert(*array2[1] == 2);
+    assert(*array2[2] == 2);
+
+
+    //Struct testing
+    printf("\n***** Structs: *****\n");
+    yummy* snack_time = alloc(yummy);
+    snack_time->num_snacks = 1000;
+    snack_time->snack_type = "Aquarium gravel";
+    printf("Snack: %d %s\n", snack_time->num_snacks,snack_time->snack_type);
+    snack_time->num_snacks = 510;
+    snack_time->snack_type = "Individual ladybugs";
+    printf("New snack: %d %s\n", snack_time->num_snacks,snack_time->snack_type);
+    printf("\n");
+    return 0;
+}

@@ -1,0 +1,92 @@
+#use <conio>
+#use <string>
+
+
+struct cmu_student {
+    bool is_happy;
+    int hours_slept_last_night;
+};
+
+
+typedef struct cmu_student* student;
+
+
+int main () {
+    print("Which failure would you like to test? Enter a number from 1-13 ");
+    string option = readline();
+    
+    if (string_equal(option, "1")) { // out-of-bounds access
+        int[] arr = alloc_array(int, 3);
+        printf("%d\n", arr[20]);
+        
+    } else if (string_equal(option, "2")) { // out-of-bounds access
+        char[] arr = alloc_array(char, 3);
+        printf("%c\n", arr[3000]);
+
+
+    } else if (string_equal(option, "3")) { // out-of-bounds access
+        int*[] arr = alloc_array(int*, 3);
+        int x = *arr[15122];
+
+
+    } else if (string_equal(option, "4")) { // out-of-bounds access
+        char[] arr = alloc_array(char, 3);
+        printf("%c\n", arr[-2]);
+
+
+    } else if (string_equal(option, "5")) { // out-of-bounds access
+        int[] arr = alloc_array(int, 3);
+        printf("%d\n", arr[-20]);
+
+
+    } else if (string_equal(option, "6")) { // out-of-bounds access
+        char*[] arr = alloc_array(char*, 3);
+        char c = *arr[-151];
+
+
+    } else if (string_equal(option, "7")) { // NULL pointer
+        int*[] arr = alloc_array(int*, 3);
+        int x = *(arr[0]);
+
+
+    } else if (string_equal(option, "8")) { // NULL pointer
+        char*[] arr = alloc_array(char*, 3);
+        char c = *(arr[1]);
+
+
+    } else if (string_equal(option, "9")) { // NULL pointer
+        int* x = NULL;
+        int y = *x;
+
+
+    } else if (string_equal(option, "10")) { // NULL pointer
+        int*[] arr = alloc_array(int*, 3);
+        *(arr[0]) = 3;
+
+
+    } else if (string_equal(option, "11")) { // NULL pointer
+        char*[] arr = alloc_array(char*, 3);
+        *(arr[1]) = 'a';
+
+
+    } else if (string_equal(option, "12")) { // NULL pointer
+        int* x = NULL;
+        *x = 122;
+
+
+    } else if (string_equal(option, "13")) { // NULL pointer
+        student karen = NULL;
+
+        if (karen->is_happy) {
+            printf("Yay!");
+        } else {
+            printf("Uh-oh");
+        }
+
+    } else {
+        printf("Invalid option!");
+    }
+
+
+    return 0;
+}

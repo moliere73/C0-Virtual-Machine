@@ -1,0 +1,65 @@
+#use <conio>
+#use <args>
+
+struct struct_test {
+    int field;
+};
+
+typedef struct struct_test* struct_t;
+
+int main() {
+    int* mistake = alloc(int);
+    args_int("mistake", mistake);
+    printf("I love coding :D\n");
+    printf("What code should I write today??\n");
+    args_parse();
+    if (*mistake % 9 == 0) {
+        printf("You got lucky.");
+    }
+    else if (*mistake % 9 == 1) {
+        printf("I'll get the last element of this array!\n");
+        int[] yay_arrays = alloc_array(int, 122);
+        int last_element = yay_arrays[-1];
+    }
+    else if (*mistake % 9 == 2) {
+        printf("I'll get the 122th element of this array!\n");
+        int[] yay_arrays = alloc_array(int, 122);
+        int last_element = yay_arrays[122];
+    }
+    else if (*mistake % 9 == 3) {
+        printf("I'll dereference this pointer!\n");
+        int* pointer = NULL;
+        int mystery = *pointer;
+    }
+    else if (*mistake % 9 == 4) {
+        printf("I'll allocate this array!\n");
+        int[] i_love_arrays = alloc_array(int, -1);
+    }
+    else if (*mistake % 9 == 5) {
+        printf("5 is my favorite number :D\n");
+        int favorite_number = 5 / 0;
+    }
+    else if (*mistake % 9 == 6) {
+        struct_t s = NULL;
+        printf("Pointer arithmetic is awesome!\n");
+        printf("Did you know a[i] <==> i[a]?\n");
+        printf("That means you can get the second element of an array like this:\n");
+        printf("1[array]\n");
+        printf("I love coding!\n");
+        int result = s->field;
+    }
+    else if (*mistake % 9 == 7) {
+        printf("I'll dereference this other pointer!\n");
+        char* pointer = NULL;
+        char mystery = *pointer;
+    }
+    else {
+        printf("I don't think I'm very good at coding...\n");
+        printf("I won't be writing any code today.\n");
+        error("Just kidding!\n");
+    }
+    if (*mistake % 8 != 0) {
+        printf("I'm so good at coding :)\n");
+    }
+    return 0x02251;
+}
