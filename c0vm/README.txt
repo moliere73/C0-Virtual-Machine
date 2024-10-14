@@ -36,18 +36,3 @@ Compiling and running your C0VM implementation (without -DDEBUG)
    % make
    % ./c0vm tests/iadd.bc0v
 
-==========================================================
-
-Submitting from the command line on andrew (CHECKPOINT):
-   % autolab122 handin c0vmcheck c0vm.c
-then display autolab's feedback by running:
-   % autolab122 feedback c0vmcheck
-
-Submitting from the command line on andrew (FINAL):
-   % autolab122 handin c0vm c0vm.c
-then display autolab's feedback by running:
-   % autolab122 feedback
-
-Creating a tarball to submit with autolab.autolab.cmu.edu web interface:
-   % tar -czvf handin.tgz c0vm.c
-
